@@ -1,0 +1,144 @@
+// 设置屏幕尺寸
+@no: 15;
+
+@media screen and (min-width:320px) {
+  html {
+    font-size: 320px / @no;
+  }
+}
+
+@media screen and (min-width:360px) {
+  html {
+    font-size: 360px / @no;
+  }
+}
+
+@media screen and (min-width:375px) {
+  html {
+    font-size: 375px / @no;
+  }
+}
+
+@media screen and (min-width:400px) {
+  html {
+    font-size: 400px / @no;
+  }
+}
+
+@media screen and (min-width:384px) {
+  html {
+    font-size: 384px / @no;
+  }
+}
+
+@media screen and (min-width:540px) {
+  html {
+    font-size: 540px / @no;
+  }
+}
+
+@media screen and (min-width:720px) {
+  html {
+    font-size: 720px / @no;
+  }
+}
+
+@media screen and (min-width:750px) {
+  html {
+    font-size: 750px / @no;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+html,
+body {
+  min-width: 320px;
+  max-width: 750px;
+  // width: 15rem;
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'Microsoft Yahe';
+  background: #f2f2f2;
+  color: #282828;
+  position: relative;
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.warp {
+  // overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../img/login_bg.png");
+  // background: #a60601;
+  background-size: 750rem/50 1334rem/50;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+
+  .warp_form {
+    padding-top: 100rem/50;
+    text-align: center;
+    .logo{
+      margin-left:115rem/50; 
+      width: 520rem/50;
+      height: 612rem/50;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    input{
+      line-height: 80rem/50;
+      height: 80rem/50;
+      width: 400rem/50;
+      text-align: center;
+      border-radius: 20px;
+      padding: 5px 10px;
+      border: none;
+      margin-top: 40rem/50;
+      font-size: 25rem/50;
+    }
+    button{
+      line-height: 80rem/50;
+      height: 80rem/50;
+      text-align: center;
+      border-radius: 20px;
+      width: 400rem/50;
+      border: none;
+      background: #f8de86;
+      margin-top: 40rem/50;
+      color: #a60601;
+      font-size: 30rem/50;
+    }
+  }
+}
+
+.showModle {
+  width: 350rem/50;
+  height: 100rem/50;
+  color: #ffff;
+  text-align: center;
+  line-height: 100rem/50;
+  border-radius: 5rem/50;
+  background-color: rgba(0, 0, 0);
+  animation: 2s MyModel;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20rem/50;
+  z-index: 1000;
+}
