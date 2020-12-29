@@ -46,7 +46,7 @@
         <div class="result" v-show="batchPlayers.length===0">
             <div @click="onKick(item, index)" class="lucky-dog" v-for="(item, index) in result[currentAward]"
                 :key="index" v-cloak>
-                {{item.name}}
+                {{item.name}}</br>{{item.number.substring(0,3)}}****{{item.number.substring(7)}}
             </div>
         </div>
         <div id="myCanvasContainer">
@@ -167,15 +167,16 @@
                     this.running = false;
                     TagCanvas.SetSpeed('myCanvas', this.getSpeed());
                     var total = this.awards[this.currentAward].count;
-                    this.result[this.currentAward] =this.result[this.currentAward] || [];
+                    this.result[this.currentAward] = this.result[this.currentAward] || [];
                     var todo = total - this.result[this.currentAward].length;
                     var N = +localStorage.getItem('batchNumber') || 20;
+                    console.log('luckyFellow',this.players)
                     var batchPlayers = [];
                     var luckyboy = [];
                     for (var i = 0; i < _this.luckyFellow.length; i++) {
                         if (this.currentAward === _this.awards.findIndex(function (x) {
-                                return x.name == _this.luckyFellow[i].names
-                            })) {
+                            return x.name == _this.luckyFellow[i].names
+                        })) {
                             let c = this.players.findIndex(function (x) {
                                 return x.id == _this.luckyFellow[i].number
                             });
@@ -184,7 +185,7 @@
                     }
                     batchPlayers = [...luckyboy]
                     for (var i = luckyboy.length, ln = Math.min(N, todo, this.players.length + luckyboy
-                            .length); i < ln; i++) {
+                        .length); i < ln; i++) {
                         this.a(batchPlayers);
                     }
 
@@ -306,12 +307,13 @@
                 // let a = this.awards;
                 // this.currentAward === a.findIndex(function(x) {return x.name === "四等奖"})?console.log("1"):console.log("2");
                 var members = JSON.parse(localStorage.getItem('members')) || this.members;
+                // console.log(members,'111111111111')
                 this.luckyFellow = JSON.parse(localStorage.getItem('luckyFellow')) || [{
                     "names": "特等奖",
                     "number": "0",
                     "editing": {}
                 }];
-                console.log(this.luckyFellow);
+                console.log(this.luckyFellow,'333333333333333');
                 this.players = JSON.parse(localStorage.getItem('players')) || members;
                 this.members = this.copy(members);
                 localStorage.setItem('players', JSON.stringify(this.players));

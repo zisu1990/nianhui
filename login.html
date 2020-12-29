@@ -3,25 +3,37 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>安徽竣川集团年会参会签到</title>
     <link rel="stylesheet" href="css/login.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/vue.min.js"></script>
     <script src="./js/http.js"></script>
+    <script>
+        window.onload = function() {
+            document.addEventListener('touchstart', function(event) {
+              if (event.touches.length > 1) {
+                event.preventDefault()
+              }
+            })
+            document.addEventListener('gesturestart', function(event) {
+              event.preventDefault()
+            })
+          }
+        </script>
 </head>
 
 <body>
     <div class="warp" id="warp">
         <div class="warp_form">
             <div class="logo"><img src="./img/logo.png" alt="" srcset=""></div>
-            <div><input type="text" placeholder="输入姓名" v-model="name" ></div>
+            <div><input type="text" placeholder="输入姓名" v-model="name"></div>
             <div><input type="text" placeholder="输入手机号" v-model="mobile"></div>
             <div><button @click="submit">提交</button></div>
         </div>
-                <!-- 提示框 -->
-                <div class="showModle"></div>
+        <!-- 提示框 -->
+        <div class="showModle"></div>
     </div>
 </body>
 
@@ -34,7 +46,12 @@
         },
         methods: {
             submit() {
-                if (this.name && this.mobile) {
+                var reg_tel = /^(13[0-9]|14[01456879]|15[0-3,5-9]|16[2567]|17[0-8]|18[0-9]|19[0-3,5-9])\d{8}$/;    //11位手机号码正则
+                if(!reg_tel.test(this.mobile)){
+                    showModel("手机号格式不对！")  
+                }
+                else{
+                    if (this.name && this.mobile) {
                     let Url = "https://nianhuiapi.anhuiqingyou.com/qiandao"
                     let params = {
                         name: this.name,
@@ -42,20 +59,21 @@
                     }
                     axiosPostRequst(Url, params).then(res => {
                         res = typeof res == "string" ? JSON.parse(res) : res;
-                        console.log(res)
-                        if(res.code===0){
-                            showModel("提交成功") 
-                            this.name='';
-                            this.mobile=''
-                        }else{
+                        // console.log(res)
+                        if (res.code === 0) {
+                            showModel("提交成功")
+                            window.location.href="./success.html"
+                        } else {
                             showModel("您已签到，请耐心等待抽奖！")
-                            this.name='';
-                            this.mobile=''
+                            this.name = '';
+                            this.mobile = ''
                         }
                     })
                 } else {
                     showModel("姓名和手机号都得填写！")
                 }
+                }
+
             }
         },
 

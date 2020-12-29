@@ -62,7 +62,6 @@ body {
   width: 100%;
   min-height: 100vh;
   background-image: url("../img/login_bg.png");
-  background-size: 15rem 26.68rem;
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
@@ -103,12 +102,23 @@ body {
   color: #a60601;
   font-size: 0.6rem;
 }
-.showModle {
-  width: 7rem;
-  height: 2rem;
-  color: #ffff;
+.warp .warp_form h1 {
+  margin: 0.6rem 0;
   text-align: center;
-  line-height: 2rem;
+  color: #fff;
+  font-size: 1rem;
+}
+.warp .warp_form p {
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+}
+.showModle {
+  width: 9rem;
+  height: 4rem;
+  color: #fff;
+  text-align: center;
+  line-height: 4rem;
   border-radius: 0.1rem;
   background-color: rgba(0, 0, 0);
   animation: 2s MyModel;
@@ -117,6 +127,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 0.4rem;
+  font-size: 0.6rem;
   z-index: 1000;
 }

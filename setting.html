@@ -87,7 +87,7 @@
             </el-table>
             <br>
             <el-button size="small" type="primary" @click="onAdd(null, -1)" v-show="tableData.length===0">增加</el-button>
-            <h1>设置奖池<span>(不设置默认填写0)</span></h1>
+            <!-- <h1>设置奖池<span>(不设置默认填写0)</span></h1>
             <el-table :data="tableDataes" style="width: 100%">
                 <el-table-column :prop="item.prop" :label="item.label" width="180" v-for="(item, index) in tableses"
                     :key="index">
@@ -114,25 +114,31 @@
                         </el-button>
                     </template>
                 </el-table-column>
-            </el-table>
-            <el-button size="small" type="primary" @click="onAdds(null, -1)" v-show="tableDataes.length===0">增加
+            </el-table> -->
+            <!-- <el-button size="small" type="primary" @click="onAdds(null, -1)" v-show="tableDataes.length===0">增加
             </el-button>
-            <br>
-            <span>
+            <br> -->
+            <!-- <span>
                 每个奖项每次抽取人数：
             </span>
             <el-select size="small" v-model="batchNumber" @change="onChange">
                 <el-option v-for="index in 20" :key="index" :label="index" :value="index">
                 </el-option>
-            </el-select>
-            <el-button size="small" type="danger" @click="onReset">
+            </el-select> -->
+            <!-- <el-button size="small" type="danger" @click="onReset">
                 重置中奖结果
-            </el-button>
+            </el-button> -->
 
         </div>
         <!-- <div>
             <button @click="serverMR()">重置(err!)</button>
         </div> -->
+
+        <div class="tijiao">
+            <a href="./index.html">
+                <button style="width: 300px;height: 50px;">去抽奖</button>
+            </a>
+        </div>
         <div class="members">
             <h1>参与人员列表(共{{memberSource.length}}人)</h1>
             <el-table :data="memberSource" style="width: 100%" stripe>
@@ -151,26 +157,22 @@
                     </template>
                 </el-table-column> -->
                 <el-table-column label="姓名" prop='name'></el-table-column>
-                <el-table-column label="手机号" prop='mobile'></el-table-column>
-                <el-table-column prop="address" label="操作">
+                <el-table-column label="手机号" prop='number'></el-table-column>
+                <!-- <el-table-column prop="address" label="操作">
                     <template slot-scope="scope">
                         <el-button size="small" @click="onRemoveMember(scope.row, scope.$index)" type="danger">
                             删除
                         </el-button>
 
                     </template>
-                </el-table-column>
+                </el-table-column> -->
             </el-table>
             <!-- <el-button size="small" @click="onAddMember" type="primary">
                 增加
             </el-button> -->
             <!-- <el-button size="small" type="warning" @click="onImport">重置</el-button> -->
         </div>
-        <div class="tijiao">
-            <a href="./index.html">
-                <button style="width: 300px;height: 50px;">去抽奖</button>
-            </a>
-        </div>
+
     </div>
     <script>
         new Vue({
@@ -179,68 +181,69 @@
                 dialogVisible: false,
                 batchNumber: 20,
                 columns: [{
-                        prop: 'name',
-                        label: '名称',
-                    },
-                    {
-                        prop: 'count',
-                        label: '数量',
-                    },
-                    {
-                        prop: 'award',
-                        label: '奖品',
-                    },
+                    prop: 'name',
+                    label: '名称',
+                },
+                {
+                    prop: 'count',
+                    label: '数量',
+                },
+                {
+                    prop: 'award',
+                    label: '奖品',
+                },
                 ],
                 memberColumns: [{
-                        prop: 'name',
-                        label: '姓名',
-                    },
-                    {
-                        prop: 'mobile',
-                        label: '手机号',
-                    },
+                    prop: 'name',
+                    label: '姓名',
+                },
+                {
+                    prop: 'mobile',
+                    label: '手机号',
+                },
                 ],
                 tableData: [{
-                        name: '二等奖',
-                        award: 'Air pods',
-                        count: 3,
-                    },
-                    {
-                        name: '一等奖',
-                        award: 'HUAWEI Mate30Pro',
-                        count: 2,
-                    },
-                    {
-                        name: '特等奖',
-                        award: 'Apple MacPro',
-                        count: 1,
-                    },
+                    name: '二等奖',
+                    award: 'Air pods',
+                    count: 3,
+                },
+                {
+                    name: '一等奖',
+                    award: 'HUAWEI Mate30Pro',
+                    count: 2,
+                },
+                {
+                    name: '特等奖',
+                    award: 'Apple MacPro',
+                    count: 1,
+                },
                 ],
                 memberSource: [],
                 tableses: [{
-                        prop: 'names',
-                        label: '奖项',
-                    },
-                    {
-                        prop: 'number',
-                        label: '中奖号码',
-                    },
+                    prop: 'names',
+                    label: '奖项',
+                },
+                {
+                    prop: 'number',
+                    label: '中奖号码',
+                },
                 ],
-                tableDataes: [{
-                        names: "特等奖",
-                        number: "0",
-                        editing: {},
-                    },
-                    {
-                        names: "特等奖",
-                        number: "0",
-                        editing: {},
-                    },
-                    {
-                        names: "特等奖",
-                        number: "0",
-                        editing: {},
-                    },
+                tableDataes: [
+                {
+                    names: "特等奖",
+                    number: "0",
+                    editing: {},
+                },
+                {
+                    names: "特等奖",
+                    number: "0",
+                    editing: {},
+                },
+                {
+                    names: "特等奖",
+                    number: "0",
+                    editing: {},
+                },
                 ],
             },
             computed: {
@@ -280,26 +283,80 @@
                         res = typeof res == "string" ? JSON.parse(res) : res;
                         console.log(res, '获取人员列表')
                         if (res.code === 0) {
-                            this.memberSource = res.data
+                            var awards = JSON.parse(localStorage.getItem('awards')) || [{
+                                name: '二等奖',
+                                award: 'Air pods',
+                                count: 3,
+                            },
+                            {
+                                name: '一等奖',
+                                award: 'HUAWEI Mate30Pro',
+                                count: 2,
+                            },
+                            {
+                                name: '特等奖',
+                                award: 'Apple MacPro',
+                                count: 1,
+                            },
+                            ];
+                            var members = JSON.parse(localStorage.getItem('members')) || window.members;
+                            var luckyFellow = JSON.parse(localStorage.getItem('luckyFellow')) || [{
+                                names: "特等奖",
+                                number: "0",
+                            },
+                            {
+                                names: "特等奖",
+                                number: "0",
+                            },
+                            {
+                                names: "特等奖",
+                                number: "0",
+                            },
+                            ];
+                            this.batchNumber = +localStorage.getItem('batchNumber') || 20;
+                            this.tableData = awards.map(function (item) {
+                                return {
+                                    name: item.name,
+                                    count: item.count,
+                                    award: item.award,
+                                    editing: {},
+                                };
+                            });
+
+                            this.tableDataes = luckyFellow.map(function (item) {
+                                return {
+                                    names: item.name,
+                                    number: item.mobile,
+                                    editing: {},
+                                };
+                            });
+                            this.memberSource = res.data.map(function (item) {
+                                return {
+                                    name: item.name,
+                                    number: item.mobile,
+                                    editing: {},
+                                };
+                            });
+                            this.saveData()
 
                         }
                     })
                 },
 
-                onReset: function () {
-                    var vm = this;
-                    this.$confirm(
-                        '重置会清空所有抽奖结果，无法撤销！',
-                        '确定要重置吗？', {
-                            confirmButtonText: '确定',
-                            cancelButtonText: '取消',
-                            type: 'warning',
-                        }
-                    ).then(function () {
-                        localStorage.removeItem('players');
-                        localStorage.removeItem('result');
-                    });
-                },
+                // onReset: function () {
+                //     var vm = this;
+                //     this.$confirm(
+                //         '重置会清空所有抽奖结果，无法撤销！',
+                //         '确定要重置吗？', {
+                //         confirmButtonText: '确定',
+                //         cancelButtonText: '取消',
+                //         type: 'warning',
+                //     }
+                //     ).then(function () {
+                //         localStorage.removeItem('players');
+                //         localStorage.removeItem('result');
+                //     });
+                // },
                 onChange: function (value) {
                     console.log(value);
                     localStorage.setItem('batchNumber', value);
@@ -328,18 +385,18 @@
                     this.tableData.splice(index, 1);
                     this.saveData();
                 },
-                onAdds: function (row, index) {
-                    console.log(row, index);
-                    this.tableDataes.splice(index + 1, 0, {
-                        editing: {
-                            name: true,
-                        },
-                    });
-                },
-                onRemoves: function (row, index) {
-                    this.tableDataes.splice(index, 1);
-                    this.saveData();
-                },
+                // onAdds: function (row, index) {
+                //     console.log(row, index);
+                //     this.tableDataes.splice(index + 1, 0, {
+                //         editing: {
+                //             name: true,
+                //         },
+                //     });
+                // },
+                // onRemoves: function (row, index) {
+                //     this.tableDataes.splice(index, 1);
+                //     this.saveData();
+                // },
                 // onAddMember: function () {
                 //     this.memberSource.push({
                 //         editing: {
@@ -358,18 +415,19 @@
                 //         vm.saveData();
                 //     });
                 // },
-                serverMR: function () {
-                    localStorage.setItem('awards', JSON.stringify(this.awards));
-                    localStorage.setItem('members', JSON.stringify(this.members));
-                    localStorage.setItem('players', JSON.stringify(this.members)); //奖池人员
-                    localStorage.setItem('luckyFellow', JSON.stringify(this.tableDataes));
-                    console.log(JSON.parse(localStorage.getItem('luckyFellow'))); //奖品
-                    console.log('luckyFellow', JSON.stringify(this.tableDataes)); //参赛人员
-                    localStorage.setItem(
-                        'batchNumber',
-                        JSON.stringify(this.batchNumber)
-                    );
-                },
+                // serverMR: function () {
+                //     console.log('123', localStorage.setItem('members', JSON.stringify(this.memberSource)))
+                //     localStorage.setItem('awards', JSON.stringify(this.awards));
+                //     localStorage.setItem('members', JSON.stringify(this.memberSource));
+                //     localStorage.setItem('players', JSON.stringify(this.memberSource)); //奖池人员
+                //     localStorage.setItem('luckyFellow', JSON.stringify(this.tableDataes));
+                //     console.log(JSON.parse(localStorage.getItem('luckyFellow'))); //奖品
+                //     console.log('luckyFellow', JSON.stringify(this.tableDataes)); //参赛人员
+                //     localStorage.setItem(
+                //         'batchNumber',
+                //         JSON.stringify(this.batchNumber)
+                //     );
+                // },
                 // onImport: function () {
                 //     var vm = this;
                 //     this.$confirm('重新导入会覆盖现有人员列表', '确定重置吗？', {
@@ -389,8 +447,11 @@
                 // },
                 saveData: function () {
                     localStorage.setItem('awards', JSON.stringify(this.awards));
-                    localStorage.setItem('members', JSON.stringify(this.members));
-                    localStorage.setItem('players', JSON.stringify(this.members)); //奖池人员
+                    console.log(this.awards,'11111111111111')
+                    localStorage.setItem('members', JSON.stringify(this.memberSource));
+                    localStorage.setItem('players', JSON.stringify(this.memberSource));
+                    //奖池人员
+                    console.log('123', this.memberSource);
                     localStorage.setItem('luckyFellow', JSON.stringify(this.tableDataes));
                     console.log(JSON.parse(localStorage.getItem('luckyFellow'))); //奖品
                     console.log('luckyFellow', JSON.stringify(this.tableDataes)); //参赛人员
@@ -402,60 +463,7 @@
             },
             created: function () {
                 this.getList()
-                var awards = JSON.parse(localStorage.getItem('awards')) || [{
-                        name: '二等奖',
-                        award: 'Air pods',
-                        count: 3,
-                    },
-                    {
-                        name: '一等奖',
-                        award: 'HUAWEI Mate30Pro',
-                        count: 2,
-                    },
-                    {
-                        name: '特等奖',
-                        award: 'Apple MacPro',
-                        count: 1,
-                    },
-                ];
-                var members = JSON.parse(localStorage.getItem('members')) || window.members;
-                var luckyFellow = JSON.parse(localStorage.getItem('luckyFellow')) || [{
-                        names: "特等奖",
-                        number: "0",
-                    },
-                    {
-                        names: "特等奖",
-                        number: "0",
-                    },
-                    {
-                        names: "特等奖",
-                        number: "0",
-                    },
-                ];
-                this.batchNumber = +localStorage.getItem('batchNumber') || 20;
-                this.tableData = awards.map(function (item) {
-                    return {
-                        name: item.name,
-                        count: item.count,
-                        award: item.award,
-                        editing: {},
-                    };
-                });
-                this.memberSource = members.map(function (item) {
-                    return {
-                        name: item.name,
-                        id: item.id,
-                        editing: {},
-                    };
-                });
-                this.tableDataes = luckyFellow.map(function (item) {
-                    return {
-                        names: item.names,
-                        number: item.number,
-                        editing: {},
-                    };
-                });
-                this.saveData();
+
             },
         });
     </script>
