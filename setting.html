@@ -13,9 +13,9 @@
     <script src="js/vue.min.js"></script>
     <!-- <script src="https://cdn.bootcss.com/element-ui/2.4.1/index.js"></script> -->
     <script src="./js/element-ui@2.4.11/lib/index.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/member.js"></script>
     <script src="./js/http.js"></script>
+
     <style>
         .el-input {
             width: 120px;
@@ -59,8 +59,7 @@
         <div class="awards">
             <h1>奖项设置 <span>（请按抽奖顺序添加）</span></h1>
             <el-table :data="tableData" style="width: 100%">
-                <el-table-column :prop="item.prop" :label="item.label" width="180" v-for="(item, index) in columns"
-                    :key="index">
+                <el-table-column :prop="item.prop" :label="item.label" width="180" v-for="(item, index) in columns" :key="index">
                     <template slot-scope="scope">
                         <div>
                             <div v-if="scope.row.editing[item.prop]">
@@ -174,6 +173,7 @@
         </div>
 
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         new Vue({
             el: '#app',
@@ -181,69 +181,83 @@
                 dialogVisible: false,
                 batchNumber: 20,
                 columns: [{
-                    prop: 'name',
-                    label: '名称',
-                },
-                {
-                    prop: 'count',
-                    label: '数量',
-                },
-                {
-                    prop: 'award',
-                    label: '奖品',
-                },
+                        prop: 'name',
+                        label: '名称',
+                    },
+                    {
+                        prop: 'count',
+                        label: '数量',
+                    },
+                    {
+                        prop: 'award',
+                        label: '奖品',
+                    },
                 ],
                 memberColumns: [{
-                    prop: 'name',
-                    label: '姓名',
-                },
-                {
-                    prop: 'mobile',
-                    label: '手机号',
-                },
+                        prop: 'name',
+                        label: '姓名',
+                    },
+                    {
+                        prop: 'mobile',
+                        label: '手机号',
+                    },
                 ],
                 tableData: [{
-                    name: '二等奖',
-                    award: 'Air pods',
-                    count: 3,
-                },
-                {
-                    name: '一等奖',
-                    award: 'HUAWEI Mate30Pro',
-                    count: 2,
-                },
-                {
-                    name: '特等奖',
-                    award: 'Apple MacPro',
-                    count: 1,
-                },
+                                    name: '幸运奖(第一轮)',
+                                    award: '苏泊尔煎烤机(价值399元)',
+                                    count: 5,
+                                },
+                                {
+                                    name: '幸运奖(第二轮)',
+                                    award: '苏泊尔煎烤机(价值399元)',
+                                    count: 5,
+                                },
+                                {
+                                    name: '幸运奖(第三轮)',
+                                    award: '苏泊尔煎烤机(价值399元)',
+                                    count: 5,
+                                },
+                    {
+                        name: '三等奖',
+                        award: '苏泊尔电压力锅',
+                        count: 5,
+                    },
+                    {
+                        name: '二等奖',
+                        award: '苹果iPad(价值2799元)',
+                        count: 3,
+                    },
+                    {
+                        name: '一等奖',
+                        award: '联想笔记本电脑(价值4500元)',
+                        count: 1,
+                    },
                 ],
                 memberSource: [],
                 tableses: [{
-                    prop: 'names',
-                    label: '奖项',
-                },
-                {
-                    prop: 'number',
-                    label: '中奖号码',
-                },
+                        prop: 'names',
+                        label: '奖项',
+                    },
+                    {
+                        prop: 'number',
+                        label: '中奖号码',
+                    },
                 ],
-                tableDataes: [
-                {
-                    names: "特等奖",
-                    number: "0",
-                    editing: {},
-                },
-                {
-                    names: "特等奖",
-                    number: "0",
-                    editing: {},
-                },
-                {
-                    names: "特等奖",
-                    number: "0",
-                    editing: {},
-                },
+                tableDataes: [{
+                        names: "特等奖",
+                        number: "0",
+                        editing: {},
+                    },
+                    {
+                        names: "特等奖",
+                        number: "0",
+                        editing: {},
+                    },
+                    {
+                        names: "特等奖",
+                        number: "0",
+                        editing: {},
+                    },
                 ],
             },
             computed: {
@@ -284,34 +298,49 @@
                         console.log(res, '获取人员列表')
                         if (res.code === 0) {
                             var awards = JSON.parse(localStorage.getItem('awards')) || [{
-                                name: '二等奖',
-                                award: 'Air pods',
-                                count: 3,
-                            },
-                            {
-                                name: '一等奖',
-                                award: 'HUAWEI Mate30Pro',
-                                count: 2,
-                            },
-                            {
-                                name: '特等奖',
-                                award: 'Apple MacPro',
-                                count: 1,
-                            },
+                                    name: '幸运奖(第一轮)',
+                                    award: '苏泊尔煎烤机(价值399元)',
+                                    count: 5,
+                                },
+                                {
+                                    name: '幸运奖(第二轮)',
+                                    award: '苏泊尔煎烤机(价值399元)',
+                                    count: 5,
+                                },
+                                {
+                                    name: '幸运奖(第三轮)',
+                                    award: '苏泊尔煎烤机(价值399元)',
+                                    count: 5,
+                                },
+                                {
+                                    name: '三等奖',
+                                    award: '苏泊尔电压力锅',
+                                    count: 5,
+                                },
+                                {
+                                    name: '二等奖',
+                                    award: '苹果iPad(价值2799元)',
+                                    count: 3,
+                                },
+                                {
+                                    name: '一等奖',
+                                    award: '联想笔记本电脑(价值4500元)',
+                                    count: 1,
+                                },
                             ];
                             var members = JSON.parse(localStorage.getItem('members')) || window.members;
                             var luckyFellow = JSON.parse(localStorage.getItem('luckyFellow')) || [{
-                                names: "特等奖",
-                                number: "0",
-                            },
-                            {
-                                names: "特等奖",
-                                number: "0",
-                            },
-                            {
-                                names: "特等奖",
-                                number: "0",
-                            },
+                                    names: "特等奖",
+                                    number: "0",
+                                },
+                                {
+                                    names: "特等奖",
+                                    number: "0",
+                                },
+                                {
+                                    names: "特等奖",
+                                    number: "0",
+                                },
                             ];
                             this.batchNumber = +localStorage.getItem('batchNumber') || 20;
                             this.tableData = awards.map(function (item) {
@@ -447,7 +476,7 @@
                 // },
                 saveData: function () {
                     localStorage.setItem('awards', JSON.stringify(this.awards));
-                    console.log(this.awards,'11111111111111')
+                    console.log(this.awards, '11111111111111')
                     localStorage.setItem('members', JSON.stringify(this.memberSource));
                     localStorage.setItem('players', JSON.stringify(this.memberSource));
                     //奖池人员

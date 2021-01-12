@@ -46,7 +46,7 @@
         <div class="result" v-show="batchPlayers.length===0">
             <div @click="onKick(item, index)" class="lucky-dog" v-for="(item, index) in result[currentAward]"
                 :key="index" v-cloak>
-                {{item.name}}</br>{{item.number.substring(0,3)}}****{{item.number.substring(7)}}
+                {{item.name}}<br/>{{item.number.substring(0,3)}}****{{item.number.substring(7)}}
             </div>
         </div>
         <div id="myCanvasContainer">
@@ -57,7 +57,7 @@
         <div id="tags">
             <ul>
                 <li v-for="(tag, index) in members" :key="index" v-cloak>
-                    <a href="#" target="_blank" style="height: auto;font-size: 200px;color: yellow;">
+                    <a  href="" onclick="return false;" style="height: auto;font-size: 200px;color: yellow;">
                         {{tag.name}}
                     </a>
                 </li>
@@ -127,11 +127,11 @@
                 toggle: function () {
                     if (this.running) {
                         this.stop();
-                        // stopMain();
+                        stopMain();
                         palyWin();
                     } else {
                         this.start();
-                        // playMain();
+                        playMain();
 
                     }
                 },
@@ -330,8 +330,8 @@
         window.onload = function () {
             var mainMusic = document.getElementById('mainMusic');
             var winMusic = document.getElementById('winMusic');
-            mainMusic.pause(); //打开页面时无音乐
-            winMusic.pause(); //打开页面时无音乐
+            // mainMusic.pause(); //打开页面时无音乐
+            // winMusic.pause(); //打开页面时无音乐
         };
 
         function playMain() {
